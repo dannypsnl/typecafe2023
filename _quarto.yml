@@ -1,0 +1,4 @@
+project:
+  title: "hami2022"
+  type: website
+  output-dir: public

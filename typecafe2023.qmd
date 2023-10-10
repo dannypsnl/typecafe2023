@@ -1,0 +1,426 @@
+---
+title: "Types cross languages"
+format:
+  revealjs:
+    show-notes: separate-page
+    theme: dark
+---
+
+### Company
+
+![](secondstate.png)
+
+---
+
+什麼是 WASI？為什麼需要它？
+
+---
+
+因為 wasm 只是一堆指令，實際上什麼都不能做
+
+---
+
+### wasm system interface
+
+- 提供操作檔案等等系統功能的介面
+- 是一個標準 subgroup
+
+---
+
+### 那跟 component model 什麼關係？
+
+WASI 想使用 component model 來定義介面，具體來說是指 wasm interface types
+
+---
+
+### Component model
+
+- 提供跨語言的介面型別（wasm interface types）
+- 對介面型別提供統一的 ABI
+- 提供實例連結功能：參數化模組
+
+---
+
+### Component model 的未來
+
+- 描述跨語言的資源控制(linear type)
+- 描述跨語言的計算(effect system)
+
+---
+
+但跨語言的型別很難很難
+
+---
+
+### 各語言的指標都是不同的東西
+
+1. 有 gc 的語言的指標通常是一個結構，塞滿各種 gc 需要的資訊
+2. 明面上沒有指標的語言也要考慮它 call-by-name/value/???
+
+---
+
+更不用說每個語言的物件編碼都不一樣
+
+---
+
+而且除開指標的型別必須有無循環的佈局，這樣才能攤開成 wasm 內建的型別來交換
+
+---
+
+#### 把指標做成一樣的東西：Resource
+
+1. 有自己對應的 linear type 規則
+    1. own
+    2. borrow
+2. 但...
+
+---
+
+就算做成一樣的東西也要處理跨越邊界的問題
+
+wasm 的不同 instance 有獨立的記憶體
+
+---
+
+拿到另一個 wasm instance 的指標 be like
+
+```{dot}
+digraph {
+  compound=true
+  node [fontname="Source Sans Pro", fontsize=15]
+  
+  subgraph {
+    a -> b
+    a -> c
+  }
+
+  subgraph {
+    a1 [label="a", color="red"]
+    a1 -> b [color="red"]
+    a1 -> c [color="red"]
+  }
+}
+```
+
+---
+
+那全部移過來不好嗎？
+
+```{dot}
+digraph {
+  compound=true
+  node [fontname="Source Sans Pro", fontsize=15]
+
+  subgraph {
+    a [label="a", color="red"]
+    b [label="b", color="red"]
+    c [label="c", color="red"]
+    a -> b [color="red"]
+    a -> c [color="red"]
+  }
+}
+```
+
+---
+
+那全部移過來不好嗎？
+
+1. 成本太高了
+2. 可能只需要其中一個
+3. 循環指標？
+
+---
+
+此外，目前 Resource 的 own/borrow 也有問題
+
+---
+
+### 規則
+
+1. own 可以被移動給另一個 own 或是借用給另一個 borrow
+2. own 不可以在借出時消失（被移動或是丟棄）
+
+---
+
+前面的規則在同步程式下大致上沒有問題，在非同步程式下則有特別多問題
+
+---
+
+```zig
+f : func(x: borrow A) -> B
+
+const x : own A = newA()
+spawn f(x)
+return
+```
+
+`x` 可能還沒歸還，所有方就結束並回收 `x` 了
+
+---
+
+借出去的同時移動
+
+```zig
+g : func(x: own A) -> B
+
+spawn g(x)
+spawn f(x)
+```
+
+---
+
+借用方進入無限迴圈（在同步程式下一樣有問題）
+
+```rust
+g : func(x: borrow A) -> B {
+    g(x)
+}
+```
+
+---
+
+由於 component model 不提供靜態檢查的機制，所以上述違反規則的程式都會陷入 trap 狀態，runtime 要提供錯誤回報
+
+---
+
+但這些錯誤相當難追蹤跟溯源，所以我本來提案了一個簡單的靜態檢查機制
+
+---
+
+規則一、移動在非同步語境下被檢查器排到最前面先操作
+
+```zig
+spawn f(x)
+spawn g(x)
+```
+
+舉例來說，對上面的程式檢查器會先套用 `g` 對 context 中 `x` 的影響，才套用 `f` 的，因此會顯示試圖借用已移動的資源的錯誤訊息
+
+---
+
+規則二、需等待非同步的借出歸還才能退出
+
+```zig
+// x : own T
+const t1 = spawn f(x)
+// x : borrow T
+join(t1)
+return
+```
+
+---
+
+但因為有可能借用方只是要用一下就要進入無限迴圈，這樣的程式應該也要被接受，所以也可以引入一個新操作 `payback` 表示借用終止
+
+```zig
+payback x
+```
+
+---
+
+借出方只需要等待此操作發出的非同步訊號即可，為此也需要一個新操作來描述這種行為
+
+```rust
+const t1 = spawn f(x)
+reclaim t1
+```
+
+---
+
+靜態檢查就需要跟蹤某種 source code，但是是哪個 source code 呢？C++, Rust 等編寫語言？還是 wasm 這個目標語言？
+
+---
+
+另外非同步機制 stack switching 還在 phase 1
+
+---
+
+所以最後決定今年暫時移除 own/borrow 型別
+
+---
+
+後續要考慮的問題：移動整個 resource 不好，那我們可以需要用的時候再移動該部分嗎？
+
+---
+
+可能的方案
+
+1. 照樣套用完全 move 語義，但執行時用 lazy move
+2. 加入一些操作處理「部分 own/borrow」
+
+---
+
+### 模組化
+
+---
+
+interface description language(IDL):
+
+wasm interface types
+
+---
+
+簡單的想法：每個 wasm instance 都配備一個 `.wit` 檔案
+
+---
+
+實際上 component model 複雜得多
+
+---
+
+component model 的模組化
+
+1. interface: signature
+2. component: unit
+3. world: unit linking
+
+---
+
+```typescript
+interface foo {
+  import console
+  
+  f: func() -> ...
+
+  export f
+}
+```
+
+---
+
+```typescript
+world default {
+  import foo (console := Js.console)
+}
+```
+
+---
+
+### 什麼是 effect？
+
+---
+
+### effect 表示計算需要的權限
+
+1. 網路操作存取本機對外的介面
+2. 檔案操作存取檔案系統
+
+---
+
+案例
+
+```scala
+def foo(using IO) : Unit
+  println("Hi")
+```
+
+---
+
+問題：effect polymorphism
+
+```scala
+def foo(using Console, f : (using Console, A) -> B) : C
+def foo(using FS, f : (using FS, A) -> B) : C
+```
+
+---
+
+Odersky 2021
+Scoped Capabilities for Polymorphic Effects
+
+```scala
+def foo(using CanThrow[E], x : A) : B
+def map(l : List[A], f : A => B) : List[B]
+catch {
+  [...].map(foo)
+} (err : E) => ...
+```
+
+https://arxiv.org/pdf/2207.03402.pdf
+
+---
+
+基於上面的 polymorphic 解法，我們區分
+
+1. 可消除的 effect
+2. 不可消除的 effect
+
+---
+
+可消除案例：`CanThrow[E]`
+
+```scala
+catch {
+  ...
+} (err : E) => ...
+```
+
+`catch` 中可以擲出 `E`
+
+---
+
+不可消除案例：Console
+
+```scala
+def foo(using Console) : A
+
+def bar() : A
+  foo()
+```
+
+:x:
+
+---
+
+effect 之間有偏序關係，例如
+
+1. `State -> Reader`
+2. `State -> Writer`
+3. `IO -> FileSystem -> ReadOnlyFS`
+
+---
+
+整體
+
+```{dot}
+digraph {
+  compound=true
+  node [fontname="Source Sans Pro", fontsize=15]
+
+  c [label="Console"]
+  fs [label="FileSystem"]
+  net [label="Network"]
+  io [label="IO"]
+
+  w [label="Writer[T]"]
+  r [label="Reader[T]"]
+  s [label="State[T]"]
+  
+  e [label="CanThrow[E]"]
+  
+  rof [label="Readonly Filesytem"]
+  wof [label="Writeonly Filesytem"]
+  
+  s -> w
+  s -> r
+  
+  io -> c
+  io -> fs
+  io -> net
+  
+  fs -> rof
+  fs -> wof
+}
+```
+
+---
+
+### 問題
+
+1. 怎麼跟 stack switching 結合(concurrency)？
+2. component model 對 effect 的描述？
+
+---
+
+End
+
