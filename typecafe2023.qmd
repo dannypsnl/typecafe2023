@@ -336,7 +336,7 @@ catch {
 } (err : E) => ...
 ```
 
-https://arxiv.org/pdf/2207.03402.pdf
+https://arxiv.org/abs/2207.03402
 
 ---
 
