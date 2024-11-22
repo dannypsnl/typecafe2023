@@ -8,9 +8,9 @@
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.5.57">
 
-  <title>typecafe2023 - Types cross languages</title>
+  <title>typecafe2023 – Types cross languages</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -41,7 +41,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -220,7 +220,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -478,46 +479,66 @@
 <section class="slide level2">
 
 <p>拿到另一個 wasm instance 的指標 be like</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <svg width="960" height="480" viewbox="0.00 0.00 134.00 117.54" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 113.54)"> <polygon fill="white" stroke="transparent" points="-4,4 -4,-113.54 130,-113.54 130,4 -4,4"></polygon> <!-- a --> <g id="node1" class="node">
-<title>
-a
-</title>
-<ellipse fill="none" stroke="black" cx="27" cy="-91.15" rx="27" ry="18.27"></ellipse> <text text-anchor="middle" x="27" y="-86.65" font-family="Source Sans Pro" font-size="15.00">a</text> </g> <!-- b --> <g id="node2" class="node">
-<title>
-b
-</title>
-<ellipse fill="none" stroke="black" cx="27" cy="-18.38" rx="27" ry="18.27"></ellipse> <text text-anchor="middle" x="27" y="-13.88" font-family="Source Sans Pro" font-size="15.00">b</text> </g> <!-- a&#45;&gt;b --> <g id="edge1" class="edge">
-<title>
-a-&gt;b
-</title>
-<path fill="none" stroke="black" d="M27,-72.66C27,-64.98 27,-55.77 27,-47.19"></path> <polygon fill="black" stroke="black" points="30.5,-47.17 27,-37.17 23.5,-47.17 30.5,-47.17"></polygon> </g> <!-- c --> <g id="node3" class="node">
-<title>
-c
-</title>
-<ellipse fill="none" stroke="black" cx="99" cy="-18.38" rx="27" ry="18.27"></ellipse> <text text-anchor="middle" x="99" y="-13.88" font-family="Source Sans Pro" font-size="15.00">c</text> </g> <!-- a&#45;&gt;c --> <g id="edge2" class="edge">
-<title>
-a-&gt;c
-</title>
-<path fill="none" stroke="black" d="M41.92,-75.49C51.96,-65.62 65.38,-52.43 76.68,-41.32"></path> <polygon fill="black" stroke="black" points="79.42,-43.54 84.1,-34.03 74.52,-38.54 79.42,-43.54"></polygon> </g> <!-- a1 --> <g id="node4" class="node">
-<title>
-a1
-</title>
-<ellipse fill="none" stroke="red" cx="99" cy="-91.15" rx="27" ry="18.27"></ellipse> <text text-anchor="middle" x="99" y="-86.65" font-family="Source Sans Pro" font-size="15.00">a</text> </g> <!-- a1&#45;&gt;b --> <g id="edge3" class="edge">
-<title>
-a1-&gt;b
-</title>
-<path fill="none" stroke="red" d="M84.08,-75.49C74.04,-65.62 60.62,-52.43 49.32,-41.32"></path> <polygon fill="red" stroke="red" points="51.48,-38.54 41.9,-34.03 46.58,-43.54 51.48,-38.54"></polygon> </g> <!-- a1&#45;&gt;c --> <g id="edge4" class="edge">
-<title>
-a1-&gt;c
-</title>
-<path fill="none" stroke="red" d="M99,-72.66C99,-64.98 99,-55.77 99,-47.19"></path> <polygon fill="red" stroke="red" points="102.5,-47.17 99,-37.17 95.5,-47.17 102.5,-47.17"></polygon> </g> </g>
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 113.54)">
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-113.54 130,-113.54 130,4 -4,4"></polygon>
+<!-- a -->
+<g id="node1" class="node">
+<title>a</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-91.15" rx="27" ry="18.27"></ellipse>
+<text text-anchor="middle" x="27" y="-86.65" font-family="Source Sans Pro" font-size="15.00">a</text>
+</g>
+<!-- b -->
+<g id="node2" class="node">
+<title>b</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-18.38" rx="27" ry="18.27"></ellipse>
+<text text-anchor="middle" x="27" y="-13.88" font-family="Source Sans Pro" font-size="15.00">b</text>
+</g>
+<!-- a&#45;&gt;b -->
+<g id="edge1" class="edge">
+<title>a-&gt;b</title>
+<path fill="none" stroke="black" d="M27,-72.66C27,-64.98 27,-55.77 27,-47.19"></path>
+<polygon fill="black" stroke="black" points="30.5,-47.17 27,-37.17 23.5,-47.17 30.5,-47.17"></polygon>
+</g>
+<!-- c -->
+<g id="node3" class="node">
+<title>c</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-18.38" rx="27" ry="18.27"></ellipse>
+<text text-anchor="middle" x="99" y="-13.88" font-family="Source Sans Pro" font-size="15.00">c</text>
+</g>
+<!-- a&#45;&gt;c -->
+<g id="edge2" class="edge">
+<title>a-&gt;c</title>
+<path fill="none" stroke="black" d="M41.92,-75.49C51.96,-65.62 65.38,-52.43 76.68,-41.32"></path>
+<polygon fill="black" stroke="black" points="79.42,-43.54 84.1,-34.03 74.52,-38.54 79.42,-43.54"></polygon>
+</g>
+<!-- a1 -->
+<g id="node4" class="node">
+<title>a1</title>
+<ellipse fill="none" stroke="red" cx="99" cy="-91.15" rx="27" ry="18.27"></ellipse>
+<text text-anchor="middle" x="99" y="-86.65" font-family="Source Sans Pro" font-size="15.00">a</text>
+</g>
+<!-- a1&#45;&gt;b -->
+<g id="edge3" class="edge">
+<title>a1-&gt;b</title>
+<path fill="none" stroke="red" d="M84.08,-75.49C74.04,-65.62 60.62,-52.43 49.32,-41.32"></path>
+<polygon fill="red" stroke="red" points="51.48,-38.54 41.9,-34.03 46.58,-43.54 51.48,-38.54"></polygon>
+</g>
+<!-- a1&#45;&gt;c -->
+<g id="edge4" class="edge">
+<title>a1-&gt;c</title>
+<path fill="none" stroke="red" d="M99,-72.66C99,-64.98 99,-55.77 99,-47.19"></path>
+<polygon fill="red" stroke="red" points="102.5,-47.17 99,-37.17 95.5,-47.17 102.5,-47.17"></polygon>
+</g>
+</g>
 </svg>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -525,34 +546,48 @@ a1-&gt;c
 <section class="slide level2">
 
 <p>那全部移過來不好嗎？</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <svg width="960" height="480" viewbox="0.00 0.00 134.00 117.54" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 113.54)"> <polygon fill="white" stroke="transparent" points="-4,4 -4,-113.54 130,-113.54 130,4 -4,4"></polygon> <!-- a --> <g id="node1" class="node">
-<title>
-a
-</title>
-<ellipse fill="none" stroke="red" cx="63" cy="-91.15" rx="27" ry="18.27"></ellipse> <text text-anchor="middle" x="63" y="-86.65" font-family="Source Sans Pro" font-size="15.00">a</text> </g> <!-- b --> <g id="node2" class="node">
-<title>
-b
-</title>
-<ellipse fill="none" stroke="red" cx="27" cy="-18.38" rx="27" ry="18.27"></ellipse> <text text-anchor="middle" x="27" y="-13.88" font-family="Source Sans Pro" font-size="15.00">b</text> </g> <!-- a&#45;&gt;b --> <g id="edge1" class="edge">
-<title>
-a-&gt;b
-</title>
-<path fill="none" stroke="red" d="M54.47,-73.38C50.16,-64.92 44.85,-54.48 40.05,-45.03"></path> <polygon fill="red" stroke="red" points="43.12,-43.36 35.47,-36.04 36.88,-46.54 43.12,-43.36"></polygon> </g> <!-- c --> <g id="node3" class="node">
-<title>
-c
-</title>
-<ellipse fill="none" stroke="red" cx="99" cy="-18.38" rx="27" ry="18.27"></ellipse> <text text-anchor="middle" x="99" y="-13.88" font-family="Source Sans Pro" font-size="15.00">c</text> </g> <!-- a&#45;&gt;c --> <g id="edge2" class="edge">
-<title>
-a-&gt;c
-</title>
-<path fill="none" stroke="red" d="M71.53,-73.38C75.84,-64.92 81.15,-54.48 85.95,-45.03"></path> <polygon fill="red" stroke="red" points="89.12,-46.54 90.53,-36.04 82.88,-43.36 89.12,-46.54"></polygon> </g> </g>
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 113.54)">
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-113.54 130,-113.54 130,4 -4,4"></polygon>
+<!-- a -->
+<g id="node1" class="node">
+<title>a</title>
+<ellipse fill="none" stroke="red" cx="63" cy="-91.15" rx="27" ry="18.27"></ellipse>
+<text text-anchor="middle" x="63" y="-86.65" font-family="Source Sans Pro" font-size="15.00">a</text>
+</g>
+<!-- b -->
+<g id="node2" class="node">
+<title>b</title>
+<ellipse fill="none" stroke="red" cx="27" cy="-18.38" rx="27" ry="18.27"></ellipse>
+<text text-anchor="middle" x="27" y="-13.88" font-family="Source Sans Pro" font-size="15.00">b</text>
+</g>
+<!-- a&#45;&gt;b -->
+<g id="edge1" class="edge">
+<title>a-&gt;b</title>
+<path fill="none" stroke="red" d="M54.47,-73.38C50.16,-64.92 44.85,-54.48 40.05,-45.03"></path>
+<polygon fill="red" stroke="red" points="43.12,-43.36 35.47,-36.04 36.88,-46.54 43.12,-43.36"></polygon>
+</g>
+<!-- c -->
+<g id="node3" class="node">
+<title>c</title>
+<ellipse fill="none" stroke="red" cx="99" cy="-18.38" rx="27" ry="18.27"></ellipse>
+<text text-anchor="middle" x="99" y="-13.88" font-family="Source Sans Pro" font-size="15.00">c</text>
+</g>
+<!-- a&#45;&gt;c -->
+<g id="edge2" class="edge">
+<title>a-&gt;c</title>
+<path fill="none" stroke="red" d="M71.53,-73.38C75.84,-64.92 81.15,-54.48 85.95,-45.03"></path>
+<polygon fill="red" stroke="red" points="89.12,-46.54 90.53,-36.04 82.88,-43.36 89.12,-46.54"></polygon>
+</g>
+</g>
 </svg>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -584,27 +619,27 @@ a-&gt;c
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource zig number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>f : func(x: borrow A) -&gt; B</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a>const x : own A = newA()</span>
-<span id="cb1-4"><a href="#cb1-4"></a>spawn f(x)</span>
-<span id="cb1-5"><a href="#cb1-5"></a>return</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource zig number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>f : func(x: borrow A) -&gt; B</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a>const x : own A = newA()</span>
+<span id="cb1-4"><a></a>spawn f(x)</span>
+<span id="cb1-5"><a></a>return</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>x</code> 可能還沒歸還，所有方就結束並回收 <code>x</code> 了</p>
 </section>
 <section class="slide level2">
 
 <p>借出去的同時移動</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource zig number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>g : func(x: own A) -&gt; B</span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a>spawn g(x)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>spawn f(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource zig number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a></a>g : func(x: own A) -&gt; B</span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a>spawn g(x)</span>
+<span id="cb2-4"><a></a>spawn f(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <p>借用方進入無限迴圈（在同步程式下一樣有問題）</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource rust number-lines code-with-copy"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1"></a>g <span class="op">:</span> func(x<span class="op">:</span> borrow A) <span class="op">-&gt;</span> B <span class="op">{</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>    g(x)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource rust number-lines code-with-copy"><code class="sourceCode rust"><span id="cb3-1"><a></a>g <span class="op">:</span> func(x<span class="op">:</span> borrow A) <span class="op">-&gt;</span> B <span class="op">{</span></span>
+<span id="cb3-2"><a></a>    g(x)</span>
+<span id="cb3-3"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
@@ -617,29 +652,29 @@ a-&gt;c
 <section class="slide level2">
 
 <p>規則一、移動在非同步語境下被檢查器排到最前面先操作</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource zig number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a>spawn f(x)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>spawn g(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource zig number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a></a>spawn f(x)</span>
+<span id="cb4-2"><a></a>spawn g(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>舉例來說，對上面的程式檢查器會先套用 <code>g</code> 對 context 中 <code>x</code> 的影響，才套用 <code>f</code> 的，因此會顯示試圖借用已移動的資源的錯誤訊息</p>
 </section>
 <section class="slide level2">
 
 <p>規則二、需等待非同步的借出歸還才能退出</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource zig number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>// x : own T</span>
-<span id="cb5-2"><a href="#cb5-2"></a>const t1 = spawn f(x)</span>
-<span id="cb5-3"><a href="#cb5-3"></a>// x : borrow T</span>
-<span id="cb5-4"><a href="#cb5-4"></a>join(t1)</span>
-<span id="cb5-5"><a href="#cb5-5"></a>return</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource zig number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a></a>// x : own T</span>
+<span id="cb5-2"><a></a>const t1 = spawn f(x)</span>
+<span id="cb5-3"><a></a>// x : borrow T</span>
+<span id="cb5-4"><a></a>join(t1)</span>
+<span id="cb5-5"><a></a>return</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <p>但因為有可能借用方只是要用一下就要進入無限迴圈，這樣的程式應該也要被接受，所以也可以引入一個新操作 <code>payback</code> 表示借用終止</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource zig number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href="#cb6-1"></a>payback x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource zig number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a></a>payback x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <p>借出方只需要等待此操作發出的非同步訊號即可，為此也需要一個新操作來描述這種行為</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource rust number-lines code-with-copy"><code class="sourceCode rust"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">const</span> t1 <span class="op">=</span> spawn f(x)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>reclaim t1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource rust number-lines code-with-copy"><code class="sourceCode rust"><span id="cb7-1"><a></a><span class="kw">const</span> t1 <span class="op">=</span> spawn f(x)</span>
+<span id="cb7-2"><a></a>reclaim t1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
@@ -693,19 +728,19 @@ a-&gt;c
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource typescript number-lines code-with-copy"><code class="sourceCode typescript"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">interface</span> foo {</span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="im">import</span> <span class="bu">console</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>  </span>
-<span id="cb8-4"><a href="#cb8-4"></a>  f<span class="op">:</span> <span class="fu">func</span>() <span class="op">-&gt;</span> <span class="op">...</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a></span>
-<span id="cb8-6"><a href="#cb8-6"></a>  <span class="im">export</span> f</span>
-<span id="cb8-7"><a href="#cb8-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource typescript number-lines code-with-copy"><code class="sourceCode typescript"><span id="cb8-1"><a></a><span class="kw">interface</span> foo {</span>
+<span id="cb8-2"><a></a>  <span class="im">import</span> <span class="bu">console</span></span>
+<span id="cb8-3"><a></a>  </span>
+<span id="cb8-4"><a></a>  f<span class="op">:</span> <span class="fu">func</span>() <span class="op">-&gt;</span> <span class="op">...</span></span>
+<span id="cb8-5"><a></a></span>
+<span id="cb8-6"><a></a>  <span class="im">export</span> f</span>
+<span id="cb8-7"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource typescript number-lines code-with-copy"><code class="sourceCode typescript"><span id="cb9-1"><a href="#cb9-1"></a>world <span class="im">default</span> {</span>
-<span id="cb9-2"><a href="#cb9-2"></a>  <span class="im">import</span> <span class="fu">foo</span> (console <span class="op">:=</span> Js<span class="op">.</span><span class="at">console</span>)</span>
-<span id="cb9-3"><a href="#cb9-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource typescript number-lines code-with-copy"><code class="sourceCode typescript"><span id="cb9-1"><a></a>world <span class="im">default</span> {</span>
+<span id="cb9-2"><a></a>  <span class="im">import</span> <span class="fu">foo</span> (console <span class="op">:=</span> Js<span class="op">.</span><span class="at">console</span>)</span>
+<span id="cb9-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
@@ -722,24 +757,24 @@ a-&gt;c
 <section class="slide level2">
 
 <p>案例</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource scala number-lines code-with-copy"><code class="sourceCode scala"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">def</span> <span class="fu">foo</span><span class="op">(</span>using IO<span class="op">)</span> <span class="op">:</span> <span class="bu">Unit</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">println</span><span class="op">(</span><span class="st">"Hi"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource scala number-lines code-with-copy"><code class="sourceCode scala"><span id="cb10-1"><a></a><span class="kw">def</span> <span class="fu">foo</span><span class="op">(</span>using IO<span class="op">)</span> <span class="op">:</span> <span class="bu">Unit</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">println</span><span class="op">(</span><span class="st">"Hi"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <p>問題：effect polymorphism</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource scala number-lines code-with-copy"><code class="sourceCode scala"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> <span class="fu">foo</span><span class="op">(</span>using <span class="ex">Console</span><span class="op">,</span> f <span class="op">:</span> <span class="op">(</span>using <span class="ex">Console</span><span class="op">,</span> A<span class="op">)</span> <span class="op">-&gt;</span> B<span class="op">)</span> <span class="op">:</span> C</span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="kw">def</span> <span class="fu">foo</span><span class="op">(</span>using FS<span class="op">,</span> f <span class="op">:</span> <span class="op">(</span>using FS<span class="op">,</span> A<span class="op">)</span> <span class="op">-&gt;</span> B<span class="op">)</span> <span class="op">:</span> C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource scala number-lines code-with-copy"><code class="sourceCode scala"><span id="cb11-1"><a></a><span class="kw">def</span> <span class="fu">foo</span><span class="op">(</span>using <span class="ex">Console</span><span class="op">,</span> f <span class="op">:</span> <span class="op">(</span>using <span class="ex">Console</span><span class="op">,</span> A<span class="op">)</span> <span class="op">-&gt;</span> B<span class="op">)</span> <span class="op">:</span> C</span>
+<span id="cb11-2"><a></a><span class="kw">def</span> <span class="fu">foo</span><span class="op">(</span>using FS<span class="op">,</span> f <span class="op">:</span> <span class="op">(</span>using FS<span class="op">,</span> A<span class="op">)</span> <span class="op">-&gt;</span> B<span class="op">)</span> <span class="op">:</span> C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <p>Odersky 2021 Scoped Capabilities for Polymorphic Effects</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource scala number-lines code-with-copy"><code class="sourceCode scala"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">def</span> <span class="fu">foo</span><span class="op">(</span>using CanThrow<span class="op">[</span>E<span class="op">],</span> x <span class="op">:</span> A<span class="op">)</span> <span class="op">:</span> B</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="kw">def</span> <span class="fu">map</span><span class="op">(</span>l <span class="op">:</span> <span class="ex">List</span><span class="op">[</span>A<span class="op">],</span> f <span class="op">:</span> A <span class="op">=&gt;</span> B<span class="op">)</span> <span class="op">:</span> <span class="ex">List</span><span class="op">[</span>B<span class="op">]</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="cf">catch</span> <span class="op">{</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a>  <span class="op">[...].</span><span class="fu">map</span><span class="op">(</span>foo<span class="op">)</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="op">}</span> <span class="op">(</span>err <span class="op">:</span> E<span class="op">)</span> <span class="op">=&gt;</span> <span class="op">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>https://arxiv.org/pdf/2207.03402.pdf</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource scala number-lines code-with-copy"><code class="sourceCode scala"><span id="cb12-1"><a></a><span class="kw">def</span> <span class="fu">foo</span><span class="op">(</span>using CanThrow<span class="op">[</span>E<span class="op">],</span> x <span class="op">:</span> A<span class="op">)</span> <span class="op">:</span> B</span>
+<span id="cb12-2"><a></a><span class="kw">def</span> <span class="fu">map</span><span class="op">(</span>l <span class="op">:</span> <span class="ex">List</span><span class="op">[</span>A<span class="op">],</span> f <span class="op">:</span> A <span class="op">=&gt;</span> B<span class="op">)</span> <span class="op">:</span> <span class="ex">List</span><span class="op">[</span>B<span class="op">]</span></span>
+<span id="cb12-3"><a></a><span class="cf">catch</span> <span class="op">{</span></span>
+<span id="cb12-4"><a></a>  <span class="op">[...].</span><span class="fu">map</span><span class="op">(</span>foo<span class="op">)</span></span>
+<span id="cb12-5"><a></a><span class="op">}</span> <span class="op">(</span>err <span class="op">:</span> E<span class="op">)</span> <span class="op">=&gt;</span> <span class="op">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>https://arxiv.org/abs/2207.03402</p>
 </section>
 <section class="slide level2">
 
@@ -752,18 +787,18 @@ a-&gt;c
 <section class="slide level2">
 
 <p>可消除案例：<code>CanThrow[E]</code></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource scala number-lines code-with-copy"><code class="sourceCode scala"><span id="cb13-1"><a href="#cb13-1"></a><span class="cf">catch</span> <span class="op">{</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="op">...</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="op">}</span> <span class="op">(</span>err <span class="op">:</span> E<span class="op">)</span> <span class="op">=&gt;</span> <span class="op">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource scala number-lines code-with-copy"><code class="sourceCode scala"><span id="cb13-1"><a></a><span class="cf">catch</span> <span class="op">{</span></span>
+<span id="cb13-2"><a></a>  <span class="op">...</span></span>
+<span id="cb13-3"><a></a><span class="op">}</span> <span class="op">(</span>err <span class="op">:</span> E<span class="op">)</span> <span class="op">=&gt;</span> <span class="op">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>catch</code> 中可以擲出 <code>E</code></p>
 </section>
 <section class="slide level2">
 
 <p>不可消除案例：Console</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource scala number-lines code-with-copy"><code class="sourceCode scala"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">def</span> <span class="fu">foo</span><span class="op">(</span>using <span class="ex">Console</span><span class="op">)</span> <span class="op">:</span> A</span>
-<span id="cb14-2"><a href="#cb14-2"></a></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="kw">def</span> <span class="fu">bar</span><span class="op">()</span> <span class="op">:</span> A</span>
-<span id="cb14-4"><a href="#cb14-4"></a>  <span class="fu">foo</span><span class="op">()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource scala number-lines code-with-copy"><code class="sourceCode scala"><span id="cb14-1"><a></a><span class="kw">def</span> <span class="fu">foo</span><span class="op">(</span>using <span class="ex">Console</span><span class="op">)</span> <span class="op">:</span> A</span>
+<span id="cb14-2"><a></a></span>
+<span id="cb14-3"><a></a><span class="kw">def</span> <span class="fu">bar</span><span class="op">()</span> <span class="op">:</span> A</span>
+<span id="cb14-4"><a></a>  <span class="fu">foo</span><span class="op">()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:x:</p>
 </section>
 <section class="slide level2">
@@ -778,82 +813,120 @@ a-&gt;c
 <section class="slide level2">
 
 <p>整體</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <svg width="960" height="480" viewbox="0.00 0.00 720.67 190.31" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 186.31)"> <polygon fill="white" stroke="transparent" points="-4,4 -4,-186.31 716.67,-186.31 716.67,4 -4,4"></polygon> <!-- c --> <g id="node1" class="node">
-<title>
-c
-</title>
-<ellipse fill="none" stroke="black" cx="79.45" cy="-91.15" rx="46.16" ry="18.27"></ellipse> <text text-anchor="middle" x="79.45" y="-86.65" font-family="Source Sans Pro" font-size="15.00">Console</text> </g> <!-- fs --> <g id="node2" class="node">
-<title>
-fs
-</title>
-<ellipse fill="none" stroke="black" cx="202.45" cy="-91.15" rx="59.1" ry="18.27"></ellipse> <text text-anchor="middle" x="202.45" y="-86.65" font-family="Source Sans Pro" font-size="15.00">FileSystem</text> </g> <!-- rof --> <g id="node9" class="node">
-<title>
-rof
-</title>
-<ellipse fill="none" stroke="black" cx="96.45" cy="-18.38" rx="96.4" ry="18.27"></ellipse> <text text-anchor="middle" x="96.45" y="-13.88" font-family="Source Sans Pro" font-size="15.00">Readonly Filesytem</text> </g> <!-- fs&#45;&gt;rof --> <g id="edge6" class="edge">
-<title>
-fs-&gt;rof
-</title>
-<path fill="none" stroke="black" d="M178.66,-74.27C164.35,-64.71 145.89,-52.39 130.1,-41.85"></path> <polygon fill="black" stroke="black" points="131.9,-38.84 121.64,-36.2 128.01,-44.66 131.9,-38.84"></polygon> </g> <!-- wof --> <g id="node10" class="node">
-<title>
-wof
-</title>
-<ellipse fill="none" stroke="black" cx="309.45" cy="-18.38" rx="98.61" ry="18.27"></ellipse> <text text-anchor="middle" x="309.45" y="-13.88" font-family="Source Sans Pro" font-size="15.00">Writeonly Filesytem</text> </g> <!-- fs&#45;&gt;wof --> <g id="edge7" class="edge">
-<title>
-fs-&gt;wof
-</title>
-<path fill="none" stroke="black" d="M226.46,-74.27C240.92,-64.71 259.54,-52.39 275.49,-41.85"></path> <polygon fill="black" stroke="black" points="277.62,-44.64 284.03,-36.2 273.76,-38.8 277.62,-44.64"></polygon> </g> <!-- net --> <g id="node3" class="node">
-<title>
-net
-</title>
-<ellipse fill="none" stroke="black" cx="327.45" cy="-91.15" rx="48.35" ry="18.27"></ellipse> <text text-anchor="middle" x="327.45" y="-86.65" font-family="Source Sans Pro" font-size="15.00">Network</text> </g> <!-- io --> <g id="node4" class="node">
-<title>
-io
-</title>
-<ellipse fill="none" stroke="black" cx="202.45" cy="-163.92" rx="27" ry="18.27"></ellipse> <text text-anchor="middle" x="202.45" y="-159.42" font-family="Source Sans Pro" font-size="15.00">IO</text> </g> <!-- io&#45;&gt;c --> <g id="edge3" class="edge">
-<title>
-io-&gt;c
-</title>
-<path fill="none" stroke="black" d="M182.42,-151.4C163.75,-140.66 135.54,-124.43 113.37,-111.67"></path> <polygon fill="black" stroke="black" points="115,-108.57 104.59,-106.62 111.51,-114.64 115,-108.57"></polygon> </g> <!-- io&#45;&gt;fs --> <g id="edge4" class="edge">
-<title>
-io-&gt;fs
-</title>
-<path fill="none" stroke="black" d="M202.45,-145.43C202.45,-137.75 202.45,-128.54 202.45,-119.95"></path> <polygon fill="black" stroke="black" points="205.95,-119.94 202.45,-109.94 198.95,-119.94 205.95,-119.94"></polygon> </g> <!-- io&#45;&gt;net --> <g id="edge5" class="edge">
-<title>
-io-&gt;net
-</title>
-<path fill="none" stroke="black" d="M222.53,-151.55C241.34,-140.91 269.84,-124.77 292.39,-112"></path> <polygon fill="black" stroke="black" points="294.36,-114.91 301.34,-106.94 290.91,-108.82 294.36,-114.91"></polygon> </g> <!-- w --> <g id="node5" class="node">
-<title>
-w
-</title>
-<ellipse fill="none" stroke="black" cx="446.45" cy="-91.15" rx="52.57" ry="18.27"></ellipse> <text text-anchor="middle" x="446.45" y="-86.65" font-family="Source Sans Pro" font-size="15.00">Writer[T]</text> </g> <!-- r --> <g id="node6" class="node">
-<title>
-r
-</title>
-<ellipse fill="none" stroke="black" cx="571.45" cy="-91.15" rx="54.78" ry="18.27"></ellipse> <text text-anchor="middle" x="571.45" y="-86.65" font-family="Source Sans Pro" font-size="15.00">Reader[T]</text> </g> <!-- s --> <g id="node7" class="node">
-<title>
-s
-</title>
-<ellipse fill="none" stroke="black" cx="508.45" cy="-163.92" rx="46.13" ry="18.27"></ellipse> <text text-anchor="middle" x="508.45" y="-159.42" font-family="Source Sans Pro" font-size="15.00">State[T]</text> </g> <!-- s&#45;&gt;w --> <g id="edge1" class="edge">
-<title>
-s-&gt;w
-</title>
-<path fill="none" stroke="black" d="M493.76,-146.15C486.15,-137.47 476.71,-126.69 468.26,-117.05"></path> <polygon fill="black" stroke="black" points="470.69,-114.51 461.47,-109.3 465.43,-119.13 470.69,-114.51"></polygon> </g> <!-- s&#45;&gt;r --> <g id="edge2" class="edge">
-<title>
-s-&gt;r
-</title>
-<path fill="none" stroke="black" d="M523.38,-146.15C531.11,-137.47 540.71,-126.69 549.29,-117.05"></path> <polygon fill="black" stroke="black" points="552.16,-119.09 556.19,-109.3 546.93,-114.44 552.16,-119.09"></polygon> </g> <!-- e --> <g id="node8" class="node">
-<title>
-e
-</title>
-<ellipse fill="none" stroke="black" cx="642.45" cy="-163.92" rx="70.44" ry="18.27"></ellipse> <text text-anchor="middle" x="642.45" y="-159.42" font-family="Source Sans Pro" font-size="15.00">CanThrow[E]</text> </g> </g>
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 186.31)">
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-186.31 716.67,-186.31 716.67,4 -4,4"></polygon>
+<!-- c -->
+<g id="node1" class="node">
+<title>c</title>
+<ellipse fill="none" stroke="black" cx="79.45" cy="-91.15" rx="46.16" ry="18.27"></ellipse>
+<text text-anchor="middle" x="79.45" y="-86.65" font-family="Source Sans Pro" font-size="15.00">Console</text>
+</g>
+<!-- fs -->
+<g id="node2" class="node">
+<title>fs</title>
+<ellipse fill="none" stroke="black" cx="202.45" cy="-91.15" rx="59.1" ry="18.27"></ellipse>
+<text text-anchor="middle" x="202.45" y="-86.65" font-family="Source Sans Pro" font-size="15.00">FileSystem</text>
+</g>
+<!-- rof -->
+<g id="node9" class="node">
+<title>rof</title>
+<ellipse fill="none" stroke="black" cx="96.45" cy="-18.38" rx="96.4" ry="18.27"></ellipse>
+<text text-anchor="middle" x="96.45" y="-13.88" font-family="Source Sans Pro" font-size="15.00">Readonly Filesytem</text>
+</g>
+<!-- fs&#45;&gt;rof -->
+<g id="edge6" class="edge">
+<title>fs-&gt;rof</title>
+<path fill="none" stroke="black" d="M178.66,-74.27C164.35,-64.71 145.89,-52.39 130.1,-41.85"></path>
+<polygon fill="black" stroke="black" points="131.9,-38.84 121.64,-36.2 128.01,-44.66 131.9,-38.84"></polygon>
+</g>
+<!-- wof -->
+<g id="node10" class="node">
+<title>wof</title>
+<ellipse fill="none" stroke="black" cx="309.45" cy="-18.38" rx="98.61" ry="18.27"></ellipse>
+<text text-anchor="middle" x="309.45" y="-13.88" font-family="Source Sans Pro" font-size="15.00">Writeonly Filesytem</text>
+</g>
+<!-- fs&#45;&gt;wof -->
+<g id="edge7" class="edge">
+<title>fs-&gt;wof</title>
+<path fill="none" stroke="black" d="M226.46,-74.27C240.92,-64.71 259.54,-52.39 275.49,-41.85"></path>
+<polygon fill="black" stroke="black" points="277.62,-44.64 284.03,-36.2 273.76,-38.8 277.62,-44.64"></polygon>
+</g>
+<!-- net -->
+<g id="node3" class="node">
+<title>net</title>
+<ellipse fill="none" stroke="black" cx="327.45" cy="-91.15" rx="48.35" ry="18.27"></ellipse>
+<text text-anchor="middle" x="327.45" y="-86.65" font-family="Source Sans Pro" font-size="15.00">Network</text>
+</g>
+<!-- io -->
+<g id="node4" class="node">
+<title>io</title>
+<ellipse fill="none" stroke="black" cx="202.45" cy="-163.92" rx="27" ry="18.27"></ellipse>
+<text text-anchor="middle" x="202.45" y="-159.42" font-family="Source Sans Pro" font-size="15.00">IO</text>
+</g>
+<!-- io&#45;&gt;c -->
+<g id="edge3" class="edge">
+<title>io-&gt;c</title>
+<path fill="none" stroke="black" d="M182.42,-151.4C163.75,-140.66 135.54,-124.43 113.37,-111.67"></path>
+<polygon fill="black" stroke="black" points="115,-108.57 104.59,-106.62 111.51,-114.64 115,-108.57"></polygon>
+</g>
+<!-- io&#45;&gt;fs -->
+<g id="edge4" class="edge">
+<title>io-&gt;fs</title>
+<path fill="none" stroke="black" d="M202.45,-145.43C202.45,-137.75 202.45,-128.54 202.45,-119.95"></path>
+<polygon fill="black" stroke="black" points="205.95,-119.94 202.45,-109.94 198.95,-119.94 205.95,-119.94"></polygon>
+</g>
+<!-- io&#45;&gt;net -->
+<g id="edge5" class="edge">
+<title>io-&gt;net</title>
+<path fill="none" stroke="black" d="M222.53,-151.55C241.34,-140.91 269.84,-124.77 292.39,-112"></path>
+<polygon fill="black" stroke="black" points="294.36,-114.91 301.34,-106.94 290.91,-108.82 294.36,-114.91"></polygon>
+</g>
+<!-- w -->
+<g id="node5" class="node">
+<title>w</title>
+<ellipse fill="none" stroke="black" cx="446.45" cy="-91.15" rx="52.57" ry="18.27"></ellipse>
+<text text-anchor="middle" x="446.45" y="-86.65" font-family="Source Sans Pro" font-size="15.00">Writer[T]</text>
+</g>
+<!-- r -->
+<g id="node6" class="node">
+<title>r</title>
+<ellipse fill="none" stroke="black" cx="571.45" cy="-91.15" rx="54.78" ry="18.27"></ellipse>
+<text text-anchor="middle" x="571.45" y="-86.65" font-family="Source Sans Pro" font-size="15.00">Reader[T]</text>
+</g>
+<!-- s -->
+<g id="node7" class="node">
+<title>s</title>
+<ellipse fill="none" stroke="black" cx="508.45" cy="-163.92" rx="46.13" ry="18.27"></ellipse>
+<text text-anchor="middle" x="508.45" y="-159.42" font-family="Source Sans Pro" font-size="15.00">State[T]</text>
+</g>
+<!-- s&#45;&gt;w -->
+<g id="edge1" class="edge">
+<title>s-&gt;w</title>
+<path fill="none" stroke="black" d="M493.76,-146.15C486.15,-137.47 476.71,-126.69 468.26,-117.05"></path>
+<polygon fill="black" stroke="black" points="470.69,-114.51 461.47,-109.3 465.43,-119.13 470.69,-114.51"></polygon>
+</g>
+<!-- s&#45;&gt;r -->
+<g id="edge2" class="edge">
+<title>s-&gt;r</title>
+<path fill="none" stroke="black" d="M523.38,-146.15C531.11,-137.47 540.71,-126.69 549.29,-117.05"></path>
+<polygon fill="black" stroke="black" points="552.16,-119.09 556.19,-109.3 546.93,-114.44 552.16,-119.09"></polygon>
+</g>
+<!-- e -->
+<g id="node8" class="node">
+<title>e</title>
+<ellipse fill="none" stroke="black" cx="642.45" cy="-163.92" rx="70.44" ry="18.27"></ellipse>
+<text text-anchor="middle" x="642.45" y="-159.42" font-family="Source Sans Pro" font-size="15.00">CanThrow[E]</text>
+</g>
+</g>
 </svg>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -870,8 +943,10 @@ e
 
 <p>End</p>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -900,7 +975,6 @@ e
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1117,18 +1191,7 @@ e
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1160,11 +1223,50 @@ e
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/dannypsnl\.github\.io\/typecafe2023\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1174,8 +1276,17 @@ e
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1189,7 +1300,11 @@ e
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
